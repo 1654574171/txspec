@@ -9,7 +9,7 @@ In such a case, we want to transfer the NFT and its programming logic, as the la
 With TxSpec, we can easily accomplish this task.
 
 # 2. Architecture of TxSpec
-[图片]
+![TxSpec](https://github.com/1654574171/irishub/blob/main/picture/txspec-whole.png)
 ## 2.1 TxSpec Module
 TxSpec Module is an application module developed on irisnet, built with the Cosmos SDK, which  can be utilized for interchain NFT transactions as well as general transactions. Its functionality includes  establishing transaction rules, registering TxSpec, and persisting the rules and TxSpec node information on the blockchain. Additionally, it performs appropriate actions based on the calculated rule results from TxSpec.
 
@@ -34,11 +34,11 @@ The rule-proposal is utilized to upload the rule language file that consists of 
 4. TxSpec-proposal
 TxSpec-proposal is used to registe the txspec service to the chain.
 
-[图片]
+![proposal](https://github.com/1654574171/irishub/blob/main/picture/proposal.png)
 
 After that, once the event of an interchainNFT transaction has been accepted by the TxSpec Relayer, the TxSpec Engine will be automatically called  to handle it. The TxSpec engine produces a result based on the logic defined in the rule language file. The TxSpec Relayer is responsible for uploading the result to the chain and storing it in the state of the TxSpec Module.
 
-[图片]
+![transaction](https://github.com/1654574171/irishub/blob/main/picture/basic-procedure.png)
 
 # 4. A simple case
 <demo vedio link>
