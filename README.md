@@ -41,4 +41,4 @@ After that, once the event of an interchainNFT transaction has been accepted by 
 ![transaction](https://github.com/1654574171/irishub/blob/main/picture/basic-procedure.png)
 
 # 4. A simple case
-<demo vedio link>
+[demo vedio](https://www.youtube.com/video/bvVBg1DeVsQ/edit)
