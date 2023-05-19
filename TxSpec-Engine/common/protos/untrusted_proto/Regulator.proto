@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package request_proto;
+
+import "ProofRequest.proto";
+import "ProofResponse.proto";
+
+service Regulator {
+    rpc GetComplianceProof (stream ProofRequest) returns (stream ProofResponse) {}
+}
+

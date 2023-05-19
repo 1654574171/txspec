@@ -1,0 +1,19 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Build') {   
+            agent any       
+            steps {
+                sh 'docker build -t compliance-engine-jenkins-exec --build-arg http_proxy=http://10.100.128.111:7890 --build-arg https_proxy=http://10.100.128.111:7890 -f DockerfileBuildEnv .'
+            }
+        }
+        stage('IntegrationTest') {
+            agent any
+
+            steps {
+                sh 'cd scripts && chmod +x run_integration_test_docker.sh && ./run_integration_test_docker.sh'
+            }
+        }
+    }
+}

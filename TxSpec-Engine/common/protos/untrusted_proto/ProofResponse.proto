@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package request_proto;
+message ErrorInfo {
+    bool status = 1;
+    string ruleFileName = 2;
+    string ruleFileID = 3;
+    string errorString = 4;
+}
+
+message Receipt {
+    bool Status = 1;
+    string contractid = 2;
+    bytes bindingHash = 3;
+    repeated bytes ruleFileHash = 4;
+    repeated ErrorInfo errorInfo = 5;
+}
+
+message Proof {
+    bool status = 1;
+    bytes RequestHash = 2;
+    bytes StateHash = 3; // DataService同步的上一个区块的hash值
+    repeated Receipt receipts = 4;
+    bytes Signature = 5;
+}
+
+message ProofResponse {
+    bytes TxHash = 1;
+    bytes ProofsHash = 2;
+    repeated Proof Proofs = 3;
+    bytes TeeSignature = 4;
+}

@@ -1,0 +1,18 @@
+version: '2'
+
+networks:
+  jenkinscomplianceengine_test:
+    external: true
+
+services:
+  compliance-engine-jenkins-exec:
+    container_name: compliance-engine-jenkins-exec
+    image: compliance-engine-jenkins-exec:latest
+    environment:
+      - CORE_MYSQL_ADDRESS=mysql-compliance-engine:3306
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - 50051:50051
+    networks:
+      - jenkinscomplianceengine_test

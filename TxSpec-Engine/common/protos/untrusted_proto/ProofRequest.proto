@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package request_proto;
+
+message Attribute {
+    string Key = 1;
+    string Value = 2;
+}
+
+message Event {
+    string EventName = 1;
+    repeated Attribute attributes = 2;
+}
+
+message ContractEvent {
+    string ContractID = 1; // contract address or module name等链上能够标识合约的字段
+    repeated Event events = 2;
+}
+
+message TxMetaData {
+    bytes fromAddress = 1;
+    bytes ToAddress = 2;
+    uint64 Value = 3;
+}
+
+message Data {
+    TxMetaData meta = 1;
+    repeated ContractEvent events = 2;
+}
+
+message ProofRequest {
+    string ChainType = 1;
+    string ChainID = 2;
+    Data Data = 3;
+    bytes TxHash = 4;
+    uint64 Height = 5;
+    uint64 TxIndex = 6;
+    bytes OriginalData = 7;
+}

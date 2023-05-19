@@ -1,0 +1,5 @@
+/home/hongbo/workspace/compliance-engine/test/build/CMakeFiles/rebuild_cache.dir
+/home/hongbo/workspace/compliance-engine/test/build/CMakeFiles/edit_cache.dir
+/home/hongbo/workspace/compliance-engine/test/build/CMakeFiles/test.dir
+/home/hongbo/workspace/compliance-engine/test/build/CMakeFiles/regulator_client.dir
+/home/hongbo/workspace/compliance-engine/test/build/CMakeFiles/register_client.dir

@@ -1,0 +1,31 @@
+{
+    "transfer":{
+        "channel_id": "mychannel",
+        "chaincode_id": "oxtoken",
+        "originator": "",
+        "from": "alice",
+        "to": "bob",
+        "value": "100",
+        "timestamp": "1234",
+        "block_num": "10",
+        "tx_index": "1"
+    },
+    "mint":{
+        "channel_id": "mychannel",
+        "chaincode_id": "oxtoken",
+        "address": "alice",
+        "amount": "1000",
+        "timestamp": "1234",
+        "block_num": "10",
+        "tx_index": "1"
+    },
+    "account":{
+        "channel_id": "mychannel",
+        "chaincode_id": "oxtoken",
+        "owner": "bob",
+        "balance": "10000",
+        "block_num": "10",
+        "tx_index": "1",
+        "timestamp": "1234"
+    }
+}

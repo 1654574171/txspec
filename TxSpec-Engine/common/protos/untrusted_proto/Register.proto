@@ -1,0 +1,16 @@
+syntax = "proto3";
+package request_proto;
+
+service Register{
+    rpc RegisterRegulatoryService (RegisterRequest) returns (RegisterResponse);
+}
+message RegisterRequest {
+    string ChainType = 1;
+    string ChainId = 2;
+}
+
+message RegisterResponse{
+    string ias_attestation_report = 1; // remote attestation report receive from Intel IAS;
+    string enclave_pk = 2; // the public key used to encrypt transaction;
+    string error_info = 3;
+}

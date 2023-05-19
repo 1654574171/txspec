@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package reg_tx_collector;
+
+// The greeting service definition.
+service TxCollectorService {
+    // Sends a Tx that will be supervised
+    rpc SendRegTx (Request) returns (Reply) {}
+}
+
+// The request message containing the request body.
+message Request {
+    string id = 1;
+    bytes block = 2;
+}
+
+// The response message containing the reply
+message Reply {
+    uint64 code = 1;
+    string message = 2;
+}

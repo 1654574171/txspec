@@ -1,0 +1,166 @@
+FROM ubuntu:bionic
+
+# Install Required Packages
+RUN apt-get update \
+    && apt-get install -y \
+    wget \
+    build-essential \
+    ca-certificates \
+    linux-headers-$(uname -r) \
+    kmod \
+    sudo \
+    unzip \
+    pkg-config \
+    libssl-dev \
+    autoconf \
+    automake \
+    libtool \
+    make \
+    g++ \
+    swig \
+    python3-dev python \
+    software-properties-common virtualenv curl xxd git unzip dh-autoreconf \
+    ocaml ocamlbuild liblmdb-dev python3-pip python3-toml \
+    python3-requests python3-colorlog python3-twisted \
+    && apt-get install -y python3-venv \
+    && pip3 install --upgrade setuptools json-rpc py-solc-x web3 colorlog twisted wheel toml
+
+# Install SGX SDK in simulator-mod
+ENV SGX_SDK /opt/intel/sgxsdk
+RUN mkdir -p /opt/intel 
+
+ARG SGX_SDK_BIN=sgx_linux_x64_sdk_2.10.100.2.bin
+
+ARG SGX_SDK_URL=https://download.01.org/intel-sgx/sgx-linux/2.10/distro/ubuntu18.04-server/${SGX_SDK_BIN}
+
+WORKDIR /opt/intel
+
+RUN wget ${SGX_SDK_URL} \
+    && chmod 744 ${SGX_SDK_BIN} \
+    && echo "yes" | ./${SGX_SDK_BIN} \
+    && rm ${SGX_SDK_BIN}
+
+# Install OpenSSL
+RUN mkdir -p /openssl/install
+
+ARG OPENSSL_URL=https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+
+WORKDIR /openssl
+
+RUN wget ${OPENSSL_URL}
+RUN tar -xzf openssl-1.1.1g.tar.gz
+RUN cd openssl-1.1.1g \
+    && ./config --prefix=$PWD/../install \
+    && make \
+    && make test \
+    && sudo make install \
+    && cd ../.. \
+    && export PKG_CONFIG_PATH="$PWD/install/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+
+
+# Install SGX OpenSSL
+RUN mkdir /sgxssl
+
+WORKDIR /sgxssl
+
+RUN wget https://download.01.org/intel-sgx/sgx-linux/2.10/as.ld.objdump.gold.r2.tar.gz
+RUN tar -xvf as.ld.objdump.gold.r2.tar.gz
+RUN sudo cp external/toolset/ubuntu18.04/* /usr/local/bin/
+RUN git clone --branch lin_2.10_1.1.1g https://github.com/intel/intel-sgx-ssl \
+    && cd intel-sgx-ssl/openssl_source \
+    && wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz \
+    && cd .. \
+    && cd Linux \
+    && export SGX_MODE=SIM \
+    && . ${SGX_SDK}/environment \
+    && make all test \
+    && sudo make install \
+    && cd ../.. \
+    && rm -rf intel-sgx-ssl
+
+# Install Protocol Buffer 3.15.2
+RUN mkdir /protobuf
+
+WORKDIR /protobuf
+
+RUN git clone --branch v3.15.2 https://github.com/protocolbuffers/protobuf
+RUN cd protobuf \
+    && git submodule update --init --recursive \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && sudo make install \
+    && sudo ldconfig \
+    && protoc --version
+
+# Install gRPC
+ARG GRPC_REPO=https://github.com/grpc/grpc
+
+ENV MY_INSTALL_DIR=/root/.local
+RUN mkdir -p $MY_INSTALL_DIR \
+    && export PATH="$PATH:$MY_INSTALL_DIR/bin" \
+    && git clone --recurse-submodules -b v1.37.1 ${GRPC_REPO}
+# Install CMake
+RUN echo y |apt autoremove cmake
+RUN wget https://cmake.org/files/v3.14/cmake-3.14.5.tar.gz \
+    && tar -xzvf cmake-3.14.5.tar.gz \
+    && cd cmake-3.14.5/ \
+    && ./bootstrap \
+    && make \
+    && sudo make install \
+    && cmake --version
+
+RUN cd grpc \
+    && mkdir -p cmake/build \
+    && cd cmake/build \
+    && cmake -DgRPC_INSTALL=ON \
+            -DgRPC_BUILD_TESTS=OFF \
+            -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+              ../.. \
+    && make \
+    && make install \
+    && cd ../.. \
+    && mkdir -p third_party/abseil-cpp/cmake/build \
+    && cd third_party/abseil-cpp/cmake/build \
+    && cmake -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+            -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
+            ../.. \
+    && make \
+    && make install \
+    && cd ../../../..
+
+ENV PATH=/root/.local/bin:$PATH
+ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/root/.local/lib/pkgconfig/
+
+# Install docker-compose
+RUN pip3 install --upgrade pip \
+  && pip3 install docker-compose
+RUN docker-compose --version
+
+# set sgxsdk environment
+ENV SGX_SDK=/opt/intel/sgxsdk
+ENV PATH=$PATH:$SGX_SDK/bin:$SGX_SDK/bin/x64
+ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$SGX_SDK/pkgconfig
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SGX_SDK/sdk_libs
+
+# Install Compliance Node
+WORKDIR /root
+
+# Install libmysqlclient-dev and lsof
+RUN echo y | apt install libmysqlclient-dev
+RUN echo y | apt install lsof
+
+COPY . compliance-engine
+
+RUN . ${SGX_SDK}/environment \
+  && cd compliance-engine \
+  && rm -rf build \
+  && mkdir build \
+  && cd build \
+  && cmake .. \
+  && make
+
+WORKDIR /root/compliance-engine
+# ENTRYPOINT ["./main"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["sh"]

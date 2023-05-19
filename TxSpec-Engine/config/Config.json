@@ -1,0 +1,9 @@
+{
+    "database_ip": "127.0.0.1",
+    "database_port": "3306",
+    "database_pw": "oxhainan",
+    "database_shcema": "reg_data_access",
+    "database_type": "mysql",
+    "database_user": "root",
+    "log_file_path" : ""
+}

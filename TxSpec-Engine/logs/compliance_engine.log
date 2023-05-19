@@ -1,0 +1,294 @@
+[87696][2023-05-18 06:11:05.761][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:67,GetComplianceProof] : firehose:FIREHOSE_ADDRESS is NULL, use default value: localhost:50052
+[87696][2023-05-18 06:11:05.762][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:83,GetComplianceProof] : start check compliance request
+[87772][2023-05-18 06:11:05.762][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:87,operator()] : start read request
+[87772][2023-05-18 06:11:05.763][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:89,operator()] : read request 0x2000
+[87777][2023-05-18 06:11:05.769][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:124,operator()] : handle request: 
+ {"Data":{"events":[{"ContractID":"TestNFTList","events":[{"EventName":"nft_receive"}]}]},"TxHash":"MHgyMDAw"}
+[87777][2023-05-18 06:11:05.770][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/BindingEnclave.cpp:11] : BindingEnclave: ecall_process_proof_request start
+[87777][2023-05-18 06:11:05.770][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:22] : BindingEnclave: init proof request
+[87777][2023-05-18 06:11:05.770][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:26] : BindingEnclave: init enclave id
+[87777][2023-05-18 06:11:05.771][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:15,ocall_query_enclave_id] : enter ocall_query_enclave_id::target_module_id 0
+[87777][2023-05-18 06:11:05.771][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:15,ocall_query_enclave_id] : enter ocall_query_enclave_id::target_module_id 1
+[87777][2023-05-18 06:11:05.771][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:15,ocall_query_enclave_id] : enter ocall_query_enclave_id::target_module_id 2
+[87777][2023-05-18 06:11:05.771][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:37] : BindingEnclave: collect message from proof request and generate binding query
+[87777][2023-05-18 06:11:05.771][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:55] : BindingEnclave: serialize binding query
+[87777][2023-05-18 06:11:05.772][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:65] : BindingEnclave: get binding
+[87777][2023-05-18 06:11:05.772][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/binding/untrusted/BindingQuery.cpp:63,queryBindingString] : query binding string by using contractid
+[87777][2023-05-18 06:11:05.773][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:24,query] : Query Sentence is {"query":"{relations(where:{contract_address:\"TestNFTList\"}){binding{content}}}"}, subgraph is regchain-system-subgraph
+[87777][2023-05-18 06:11:05.773][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:27,query] : Query Target is /subgraphs/name/regchain-system-subgraph
+[87777][2023-05-18 06:11:05.776][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:56,query] : the original response data is 
+ : {"data": {"relations": [{"binding": {"content": "rules{ nft_receive -> [TestNFTListRule.nft_white_list];}"}}]}}
+[87777][2023-05-18 06:11:05.776][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/binding/untrusted/BindingQuery.cpp:51,handleQueryResult] : Get Binding String rules{ nft_receive -> [TestNFTListRule.nft_white_list];}
+[87777][2023-05-18 06:11:05.777][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/binding/untrusted/BindingQuery.cpp:82,queryBindingString] : Original string 
+G
+TestNFTList8rules{ nft_receive -> [TestNFTListRule.nft_white_list];}. encoded string CkcKC1Rlc3RORlRMaXN0EjhydWxlc3sgbmZ0X3JlY2VpdmUgLT4gW1Rlc3RORlRMaXN0UnVsZS5uZnRfd2hpdGVfbGlzdF07fQ==
+[87777][2023-05-18 06:11:05.778][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/binding/untrusted/BindingQuery.cpp:84,queryBindingString] : return result data is CkcKC1Rlc3RORlRMaXN0EjhydWxlc3sgbmZ0X3JlY2VpdmUgLT4gW1Rlc3RORlRMaXN0UnVsZS5uZnRfd2hpdGVfbGlzdF07fQ==
+[87777][2023-05-18 06:11:05.779][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:71] : the query result is :
+[87777][2023-05-18 06:11:05.779][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:72] : 
+G
+TestNFTList8rules{ nft_receive -> [TestNFTListRule.nft_white_list];}
+[87777][2023-05-18 06:11:05.779][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:76] : the contract id :
+[87777][2023-05-18 06:11:05.780][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:77] : TestNFTList
+[87777][2023-05-18 06:11:05.781][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:79] : the binding string :
+[87777][2023-05-18 06:11:05.782][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:80] : rules{ nft_receive -> [TestNFTListRule.nft_white_list];}
+[87777][2023-05-18 06:11:05.782][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/BindingResolver.cpp:11] : enter function resolveBindingString
+[87777][2023-05-18 06:11:05.783][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/BindingResolver.cpp:12] : rules{ nft_receive -> [TestNFTListRule.nft_white_list];}
+[87777][2023-05-18 06:11:05.784][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/binding_language_listener/BindingListener.cpp:24] : enter function: enterEventToRules
+[87777][2023-05-18 06:11:05.785][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/binding_language_listener/BindingListener.cpp:31] : enter function: enterRuleItem
+[87777][2023-05-18 06:11:05.786][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/binding_language_listener/BindingListener.cpp:44] : nft_receive:[ 
+TestNFTListRule:[
+nft_white_list,
+]
+]
+[87777][2023-05-18 06:11:05.787][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/BindingResolver.cpp:28] : event name
+[87777][2023-05-18 06:11:05.787][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/binding_language/BindingResolver.cpp:29] : nft_receive
+[87777][2023-05-18 06:11:05.788][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/BindingEnclave.cpp:21] : BindingEnclave: check rule
+[87777][2023-05-18 06:11:05.788][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:123] : 8
+TestNFTList0x2000*!
+TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.789][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:125] : BindingEnclave: send rule check e2e request
+[87777][2023-05-18 06:11:05.790][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:148] : enter E2ERequestResponse
+[87777][2023-05-18 06:11:05.791][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:160] : 8
+TestNFTList0x2000*!
+TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.791][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:272] : enter send request receive response
+[87777][2023-05-18 06:11:05.792][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:140,ocall_send_request] : enter ocall_send_request
+[87777][2023-05-18 06:11:05.793][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:166,ocall_send_request] : rue  checker 376483948265474 call 376483948265476
+[87777][2023-05-18 06:11:05.793][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:445] : enter ecall generate response
+[87777][2023-05-18 06:11:05.794][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:194] : enter check_rule_wrapper
+[87777][2023-05-18 06:11:05.795][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : enter unmarshal_input_param
+[87777][2023-05-18 06:11:05.795][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:48] : rulechecker ms->inparam_buff:8
+TestNFTList0x2000*!
+TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.796][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:56] : function_input rulechecker:8
+TestNFTList0x2000*!
+TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.797][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : enter fill_rule_check_response
+[87777][2023-05-18 06:11:05.797][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : Rule Enclave: start query rule items
+[87777][2023-05-18 06:11:05.798][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : enter get_rulefile_content
+[87777][2023-05-18 06:11:05.799][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : Rule file name : TestNFTListRule
+[87777][2023-05-18 06:11:05.799][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:24,query] : Query Sentence is {"query":"{rules(where:{name:\"TestNFTListRule\"}){content \n }}"}, subgraph is regchain-system-subgraph
+[87777][2023-05-18 06:11:05.799][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:27,query] : Query Target is /subgraphs/name/regchain-system-subgraph
+[87777][2023-05-18 06:11:05.801][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:56,query] : the original response data is 
+ : {"data": {"rules": [{"content": "regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}"}]}}
+[87777][2023-05-18 06:11:05.801][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:26] : enter ParseEntityOutputJSON with json_output: {"message": "SUCCESS", "result": {"data": {"rules": [{"content": "regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}"}]}}, "type": "entity"}
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:57] : rule
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:61] : [{"content": "regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}"}]
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:67] : {"content": "regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}"}
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:75] : content
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:99] : exit ParseEntityOutputJSON with parsed_json_output: {"rule": {"content": "regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}"}}
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : Rule Enclave: get rulefile text
+[87777][2023-05-18 06:11:05.802][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}
+[87777][2023-05-18 06:11:05.803][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/request_handler/RequestHandler.cpp:33] : enter CheckRule with request id: TestNFTList:0x307832303030
+[87777][2023-05-18 06:11:05.803][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/request_handler/RequestHandler.cpp:34] : rule text:
+regulation erc20 entities { entity interchainnftreceive {  hash  sender  receiver  class_id  tocken_id  timestamp }  } rules {rule nft_white_list { interchainnftreceive.tocken_id in discountnftlist}}
+[87777][2023-05-18 06:11:05.803][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/request_handler/RequestHandler.cpp:25] : rule id to be checked: 
+[nft_white_list]
+[87777][2023-05-18 06:11:05.803][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:79] : enter EvaluateRule
+[87777][2023-05-18 06:11:05.803][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:86] : parse rule text
+[87777][2023-05-18 06:11:05.805][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:96] : traverse tokens
+[87777][2023-05-18 06:11:05.806][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 0: [@0,0:9='regulation',<1>,1:0]
+[87777][2023-05-18 06:11:05.806][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 1: [@1,10:10=' ',<78>,channel=1,1:10]
+[87777][2023-05-18 06:11:05.807][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 2: [@2,11:15='erc20',<77>,1:11]
+[87777][2023-05-18 06:11:05.808][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 3: [@3,16:16=' ',<78>,channel=1,1:16]
+[87777][2023-05-18 06:11:05.808][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 4: [@4,17:24='entities',<2>,1:17]
+[87777][2023-05-18 06:11:05.808][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 5: [@5,25:25=' ',<78>,channel=1,1:25]
+[87777][2023-05-18 06:11:05.809][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 6: [@6,26:26='{',<27>,1:26]
+[87777][2023-05-18 06:11:05.809][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 7: [@7,27:27=' ',<78>,channel=1,1:27]
+[87777][2023-05-18 06:11:05.810][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 8: [@8,28:33='entity',<5>,1:28]
+[87777][2023-05-18 06:11:05.810][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 9: [@9,34:34=' ',<78>,channel=1,1:34]
+[87777][2023-05-18 06:11:05.811][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 10: [@10,35:54='interchainnftreceive',<77>,1:35]
+[87777][2023-05-18 06:11:05.811][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 11: [@11,55:55=' ',<78>,channel=1,1:55]
+[87777][2023-05-18 06:11:05.812][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 12: [@12,56:56='{',<27>,1:56]
+[87777][2023-05-18 06:11:05.812][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 13: [@13,57:58='  ',<78>,channel=1,1:57]
+[87777][2023-05-18 06:11:05.813][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 14: [@14,59:62='hash',<77>,1:59]
+[87777][2023-05-18 06:11:05.813][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 15: [@15,63:64='  ',<78>,channel=1,1:63]
+[87777][2023-05-18 06:11:05.814][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 16: [@16,65:70='sender',<77>,1:65]
+[87777][2023-05-18 06:11:05.814][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 17: [@17,71:72='  ',<78>,channel=1,1:71]
+[87777][2023-05-18 06:11:05.815][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 18: [@18,73:80='receiver',<77>,1:73]
+[87777][2023-05-18 06:11:05.815][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 19: [@19,81:82='  ',<78>,channel=1,1:81]
+[87777][2023-05-18 06:11:05.816][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 20: [@20,83:90='class_id',<77>,1:83]
+[87777][2023-05-18 06:11:05.816][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 21: [@21,91:92='  ',<78>,channel=1,1:91]
+[87777][2023-05-18 06:11:05.817][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 22: [@22,93:101='tocken_id',<77>,1:93]
+[87777][2023-05-18 06:11:05.817][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 23: [@23,102:103='  ',<78>,channel=1,1:102]
+[87777][2023-05-18 06:11:05.817][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 24: [@24,104:112='timestamp',<77>,1:104]
+[87777][2023-05-18 06:11:05.818][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 25: [@25,113:113=' ',<78>,channel=1,1:113]
+[87777][2023-05-18 06:11:05.818][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 26: [@26,114:114='}',<28>,1:114]
+[87777][2023-05-18 06:11:05.818][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 27: [@27,115:116='  ',<78>,channel=1,1:115]
+[87777][2023-05-18 06:11:05.819][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 28: [@28,117:117='}',<28>,1:117]
+[87777][2023-05-18 06:11:05.819][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 29: [@29,118:118=' ',<78>,channel=1,1:118]
+[87777][2023-05-18 06:11:05.819][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 30: [@30,119:123='rules',<3>,1:119]
+[87777][2023-05-18 06:11:05.820][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 31: [@31,124:124=' ',<78>,channel=1,1:124]
+[87777][2023-05-18 06:11:05.820][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 32: [@32,125:125='{',<27>,1:125]
+[87777][2023-05-18 06:11:05.820][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 33: [@33,126:129='rule',<7>,1:126]
+[87777][2023-05-18 06:11:05.821][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 34: [@34,130:130=' ',<78>,channel=1,1:130]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 35: [@35,131:144='nft_white_list',<77>,1:131]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 36: [@36,145:145=' ',<78>,channel=1,1:145]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 37: [@37,146:146='{',<27>,1:146]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 38: [@38,147:147=' ',<78>,channel=1,1:147]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 39: [@39,148:167='interchainnftreceive',<77>,1:148]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 40: [@40,168:168='.',<35>,1:168]
+[87777][2023-05-18 06:11:05.822][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 41: [@41,169:177='tocken_id',<77>,1:169]
+[87777][2023-05-18 06:11:05.823][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 42: [@42,178:178=' ',<78>,channel=1,1:178]
+[87777][2023-05-18 06:11:05.823][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 43: [@43,179:180='in',<39>,1:179]
+[87777][2023-05-18 06:11:05.823][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 44: [@44,181:181=' ',<78>,channel=1,1:181]
+[87777][2023-05-18 06:11:05.824][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 45: [@45,182:196='discountnftlist',<77>,1:182]
+[87777][2023-05-18 06:11:05.824][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 46: [@46,197:197='}',<28>,1:197]
+[87777][2023-05-18 06:11:05.824][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 47: [@47,198:198='}',<28>,1:198]
+[87777][2023-05-18 06:11:05.825][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:101] : token at pos 48: [@48,199:198='<EOF>',<-1>,1:199]
+[87777][2023-05-18 06:11:05.825][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:103] : parse rule tree
+[87777][2023-05-18 06:11:05.826][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:105] : get tree root
+[87777][2023-05-18 06:11:05.828][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:457] : enter visitEntityDecl: interchainnftreceive{hashsenderreceiverclass_idtocken_idtimestamp}
+[87777][2023-05-18 06:11:05.828][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[hash]
+[87777][2023-05-18 06:11:05.829][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[sender]
+[87777][2023-05-18 06:11:05.829][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[receiver]
+[87777][2023-05-18 06:11:05.829][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[class_id]
+[87777][2023-05-18 06:11:05.829][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[tocken_id]
+[87777][2023-05-18 06:11:05.830][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[timestamp]
+[87777][2023-05-18 06:11:05.830][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:524] : visitSetExpr: alterantive 2
+[87777][2023-05-18 06:11:05.830][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:121] : KeepTrackOfNewEntityAttribute: interchainnftreceive[tocken_id]
+[87777][2023-05-18 06:11:05.831][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/EntityCollector.cpp:369] : GetNewWhereConstraint: discountnftlist[]
+[87777][2023-05-18 06:11:05.831][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:15] : EvaluateRule: dump entity list
+[87777][2023-05-18 06:11:05.831][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:39] : EvaluateRule: new entity: EvaluateRule: entity: interchainnftreceive[class_id, hash, receiver, sender, timestamp, tocken_id]
+[87777][2023-05-18 06:11:05.831][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:44] : EvaluateRule: dump entity set list
+[87777][2023-05-18 06:11:05.832][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:56] : EvaluateRule: constraint_list size: 1
+[87777][2023-05-18 06:11:05.832][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:72] : EvaluateRule: new entity set: EvaluateRule: entity set: discountnftlist[where {
+  left_entity: "interchainnftreceive"
+  left_member: "tocken_id"
+  right_entity: "discountnftlist"
+}
+]
+[87777][2023-05-18 06:11:05.833][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:121] : request entity binding
+[87777][2023-05-18 06:11:05.833][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:127] : request entity: interchainnftreceive[class_id, hash, receiver, sender, timestamp, tocken_id]
+[87777][2023-05-18 06:11:05.833][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:128] : request id is : TestNFTList:0x307832303030
+[87777][2023-05-18 06:11:05.834][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/Query.cpp:55] : GenerateQueryString(const Entity& entity, const RequestContext* context) :  {"query":"{ interchainnftreceives(where:{ contract_address:\"TestNFTList\" hash:\"0x307832303030\" }){class_id hash receiver sender timestamp tocken_id } }"} 
+[87777][2023-05-18 06:11:05.834][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:24,query] : Query Sentence is  {"query":"{ interchainnftreceives(where:{ contract_address:\"TestNFTList\" hash:\"0x307832303030\" }){class_id hash receiver sender timestamp tocken_id } }"} , subgraph is regchain-TestNFTList-subgraph
+[87777][2023-05-18 06:11:05.834][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:27,query] : Query Target is /subgraphs/name/regchain-TestNFTList-subgraph
+[87777][2023-05-18 06:11:05.835][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:56,query] : the original response data is 
+ : {"data": {"interchainnftreceives": [{"class_id": "fail", "tocken_id": "fail_1"}]}}
+[87777][2023-05-18 06:11:05.836][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:136] : entity binding{"message": "SUCCESS", "result": {"data": {"interchainnftreceives": [{"class_id": "fail", "tocken_id": "fail_1"}]}}, "type": "entity"}
+[87777][2023-05-18 06:11:05.836][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:26] : enter ParseEntityOutputJSON with json_output: {"message": "SUCCESS", "result": {"data": {"interchainnftreceives": [{"class_id": "fail", "tocken_id": "fail_1"}]}}, "type": "entity"}
+[87777][2023-05-18 06:11:05.837][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:57] : interchainnftreceive
+[87777][2023-05-18 06:11:05.837][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:61] : [{"class_id": "fail", "tocken_id": "fail_1"}]
+[87777][2023-05-18 06:11:05.837][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:67] : {"class_id": "fail", "tocken_id": "fail_1"}
+[87777][2023-05-18 06:11:05.838][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:75] : class_id
+[87777][2023-05-18 06:11:05.838][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:75] : tocken_id
+[87777][2023-05-18 06:11:05.838][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:99] : exit ParseEntityOutputJSON with parsed_json_output: {"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}
+[87777][2023-05-18 06:11:05.839][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:141] : EvaluateRule: requested entity: {"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}
+[87777][2023-05-18 06:11:05.839][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_types/RequestContext.cpp:101] : set entity binding: interchainnftreceive[{"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}]
+[87777][2023-05-18 06:11:05.839][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:146] : request entity set binding
+[87777][2023-05-18 06:11:05.839][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_types/EntitySet.cpp:71] : new where constraint
+[87777][2023-05-18 06:11:05.840][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:150] : request entity set: discountnftlist{left_entity: "interchainnftreceive"
+left_member: "tocken_id"
+right_entity: "discountnftlist"
+}
+[87777][2023-05-18 06:11:05.840][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/Query.cpp:129] : handle where
+[87777][2023-05-18 06:11:05.840][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/Query.cpp:134] : interchainnftreceive.tocken_id
+[87777][2023-05-18 06:11:05.840][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_types/RequestContext.cpp:50] : get entity binding: interchainnftreceive[{"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}]
+[87777][2023-05-18 06:11:05.841][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/Query.cpp:136] : {"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}
+[87777][2023-05-18 06:11:05.841][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/Query.cpp:138] : fail_1
+[87777][2023-05-18 06:11:05.841][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/Query.cpp:64] : GenerateQueryString(const EntitySet& entity, const RequestContext* context) :  {"query":"{ discountnftlists(where:{ tocken_id:\"fail_1\" }){tocken_id } }"} 
+[87777][2023-05-18 06:11:05.842][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:154] : query string is:  {"query":"{ discountnftlists(where:{ tocken_id:\"fail_1\" }){tocken_id } }"} 
+[87777][2023-05-18 06:11:05.842][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:24,query] : Query Sentence is  {"query":"{ discountnftlists(where:{ tocken_id:\"fail_1\" }){tocken_id } }"} , subgraph is regchain-TestNFTList-subgraph
+[87777][2023-05-18 06:11:05.842][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:27,query] : Query Target is /subgraphs/name/regchain-TestNFTList-subgraph
+[87777][2023-05-18 06:11:05.844][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/http_client/HttpClient.cpp:56,query] : the original response data is 
+ : {"data": {"discountnftlists": []}}
+[87777][2023-05-18 06:11:05.844][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:159] : entity set query result{"message": "SUCCESS", "result": {"data": {"discountnftlists": []}}, "type": "entity"}
+[87777][2023-05-18 06:11:05.845][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:118] : json_outpu string: 
+{"message": "SUCCESS", "result": {"data": {"discountnftlists": []}}, "type": "entity"}
+[87777][2023-05-18 06:11:05.845][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_provider/DataProvider.cpp:184] : exit ParseEntitySetOutputJSON with parsed_json_output: []
+[87777][2023-05-18 06:11:05.845][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:164] : EvaluateRule: requested entity set: []
+[87777][2023-05-18 06:11:05.846][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_types/RequestContext.cpp:125] : set entity set binding: interchainnftreceive.tocken_idindiscountnftlist[[]]
+[87777][2023-05-18 06:11:05.846][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:168] : evalute rule with entity and entity set binding
+[87777][2023-05-18 06:11:05.847][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:218] : enter visitEntityDecl: interchainnftreceive{hashsenderreceiverclass_idtocken_idtimestamp}
+[87777][2023-05-18 06:11:05.847][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:254] : ----------------------- start checking: nft_white_list -----------------------
+
+[87777][2023-05-18 06:11:05.847][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:308] : enter visitRuleStmtList: interchainnftreceive.tocken_idindiscountnftlist
+[87777][2023-05-18 06:11:05.847][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:324] : enter visitRuleStmt: interchainnftreceive.tocken_idindiscountnftlist
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:331] : visitRuleStmt: alterantive 1
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:354] : enter visitSimpleStmt: interchainnftreceive.tocken_idindiscountnftlist
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:361] : visitSimpleStmt: alterantive 1
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:399] : enter visitSetStmt: interchainnftreceive.tocken_idindiscountnftlist
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:407] : enter visitSetExpr: interchainnftreceive.tocken_idindiscountnftlist
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:419] : visitSetExpr: alterantive 2
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:117] : get entity binding from request context map in RuleEvaluator: interchainnftreceive
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/data_types/RequestContext.cpp:50] : get entity binding: interchainnftreceive[{"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}]
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:140] : get entity binding set from request context map in RuleEvaluator: interchainnftreceive.tocken_idindiscountnftlist
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:440] : visitSetExpr: start evaluate set expression
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:449] : retrieved element: {"interchainnftreceive": {"class_id": "fail", "tocken_id": "fail_1"}}, entity set: []
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:384] : exit visitSimpleStmt with evaluation: false
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:347] : exit visitRuleStmt with evaluation: false
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:285] : exit visitBasicRule with evaluation: false
+[87777][2023-05-18 06:11:05.848][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_visitors/RuleEvaluator.cpp:291] : ----------------------- end checking: nft_white_list ----------------------- with result: UNSATISFIED
+[87777][2023-05-18 06:11:05.849][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/rule_processor/RuleProcessor.cpp:177] : exit EvaluateRule
+[87777][2023-05-18 06:11:05.849][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/request_handler/RequestHandler.cpp:55] : CheckRule: rule id = nft_white_list, evaluation result: UNSATISFIED
+[87777][2023-05-18 06:11:05.849][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/request_handler/RequestHandler.cpp:58] : exit CheckRule
+[87777][2023-05-18 06:11:05.849][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:22] : rule check response is: 0
+TestNFTList!TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/rule/trusted/local_attestation/RuleResponse.cpp:225] : exit check_rule_wrapper
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:417] : exit send request receive response
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:63] : enter UnmarshalFunctionOutput
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:74] : exit UnmarshalFunctionOutput
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:212] : exit E2ERequestResponse::SUCCESS
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:131] : check response
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:132] : 
+20
+TestNFTList!TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:137] : BindingEnclave: receive response
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:140] : BindingEnclave: end check rules
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:186] : BindingEnclave: start generate proof response
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:194] : BindingEnclave: start filling proof
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:198] : BindingEnclave: start filling receipt
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:207] : BindingEnclave: start filling result
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:224] : BindingEnclave: get signature of proof
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:150] : BindingEnclave: start getting signature
+[87777][2023-05-18 06:11:05.850][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:160] : BindingEnclave: send signature e2e request
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:148] : enter E2ERequestResponse
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:160] : 4
+2"0TestNFTList*!TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:272] : enter send request receive response
+[87777][2023-05-18 06:11:05.851][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:140,ocall_send_request] : enter ocall_send_request
+[87777][2023-05-18 06:11:05.851][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:162,ocall_send_request] : key Management 376483948265474 call 376483948265475
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:445] : enter ecall generate response
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:283] : sign_challenge_wrapper::function_input:4
+2"0TestNFTList*!TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:298] : sign_challenge_wrapper::request_input.datas:"0TestNFTList*!TestNFTListRulenft_white_list
+[87777][2023-05-18 06:11:05.851][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:303] : sign_challenge_wrapper::sign chanllenge error
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:329] : exit sign_challenge_wrapper
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:417] : exit send request receive response
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:63] : enter UnmarshalFunctionOutput
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:74] : exit UnmarshalFunctionOutput
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:212] : exit E2ERequestResponse::SUCCESS
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:178] : cN5CLfh/AADgaUhn+H8AANbWQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA==
+[87777][2023-05-18 06:11:05.852][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:229] : BindingEnclave: get signature of proof response
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:150] : BindingEnclave: start getting signature
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:160] : BindingEnclave: send signature e2e request
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:148] : enter E2ERequestResponse
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:160] : š
+—
+0x2000Œ"0TestNFTList*!TestNFTListRulenft_white_list*XcN5CLfh/AADgaUhn+H8AANbWQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA==
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:272] : enter send request receive response
+[87777][2023-05-18 06:11:05.853][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:140,ocall_send_request] : enter ocall_send_request
+[87777][2023-05-18 06:11:05.853][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/common/local_attestation/untrusted/UntrustedEnclaveMessageExchange.cpp:162,ocall_send_request] : key Management 376483948265474 call 376483948265475
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:445] : enter ecall generate response
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:283] : sign_challenge_wrapper::function_input:š
+—
+0x2000Œ"0TestNFTList*!TestNFTListRulenft_white_list*XcN5CLfh/AADgaUhn+H8AANbWQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA==
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:298] : sign_challenge_wrapper::request_input.datas:
+0x2000Œ"0TestNFTList*!TestNFTListRulenft_white_list*XcN5CLfh/AADgaUhn+H8AANbWQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA==
+[87777][2023-05-18 06:11:05.853][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:303] : sign_challenge_wrapper::sign chanllenge error
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/key_management/trusted/KeyManagementEnclave.cpp:329] : exit sign_challenge_wrapper
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/EnclaveMessageExchange.cpp:417] : exit send request receive response
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:63] : enter UnmarshalFunctionOutput
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:74] : exit UnmarshalFunctionOutput
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/common/local_attestation/trusted/RequestResponseUtil.cpp:212] : exit E2ERequestResponse::SUCCESS
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:178] : EOBCLfh/AADgaUhn+H8AAD3fQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA==
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/BindingEnclave.cpp:26] : BindingEnclave: return response
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:247] : Binding Enclave: output proof response data
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/TxContext.cpp:249] : CgYweDIwMDAajAEiMBILVGVzdE5GVExpc3QqIRIPVGVzdE5GVExpc3RSdWxlGg5uZnRfd2hpdGVfbGlzdCpYY041Q0xmaC9BQURnYVVobitIOEFBTmJXUWkzNGZ3QUF3TGhCTFFNQUFBRFF1RUV0K0g4QUFOQzRRUzBmQXdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE9PSJYRU9CQ0xmaC9BQURnYVVobitIOEFBRDNmUWkzNGZ3QUF3TGhCTFFNQUFBRFF1RUV0K0g4QUFOQzRRUzBmQXdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE9PQ==
+[87777][2023-05-18 06:11:05.854][trusted_logger][info] : [/home/hongbo/workspace/compliance-engine/binding/trusted/BindingEnclave.cpp:28] : ecall_process_proof_request end.
+[87777][2023-05-18 06:11:05.854][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:39,ProofRequestProcess] : return to untrsted zoom
+[87777][2023-05-18 06:11:05.854][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:43,ProofRequestProcess] : Receive proof response 
+0x2000Œ"0TestNFTList*!TestNFTListRulenft_white_list*XcN5CLfh/AADgaUhn+H8AANbWQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA=="XEOBCLfh/AADgaUhn+H8AAD3fQi34fwAAwLhBLQMAAADQuEEt+H8AANC4QS0fAwAAAAAAAAAAAAAAAAAAAAAAAA==
+[87777][2023-05-18 06:11:05.855][untrusted_logger][info][/home/hongbo/workspace/compliance-engine/compliance_engine_server/request_processor/RegulatorServiceImpl.cpp:126,operator()] : get response: 
+ {"TxHash":"MHgyMDAw","Proofs":[{"receipts":[{"contractid":"TestNFTList","errorInfo":[{"ruleFileName":"TestNFTListRule","ruleFileID":"nft_white_list"}]}],"Signature":"Y041Q0xmaC9BQURnYVVobitIOEFBTmJXUWkzNGZ3QUF3TGhCTFFNQUFBRFF1RUV0K0g4QUFOQzRRUzBmQXdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE9PQ=="}],"TeeSignature":"RU9CQ0xmaC9BQURnYVVobitIOEFBRDNmUWkzNGZ3QUF3TGhCTFFNQUFBRFF1RUV0K0g4QUFOQzRRUzBmQXdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE9PQ=="}

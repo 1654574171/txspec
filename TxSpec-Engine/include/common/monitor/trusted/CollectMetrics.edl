@@ -1,0 +1,10 @@
+enclave {
+    include "common/monitor/trusted/MetricsType.h"
+    untrusted {
+        void ocall_push_metrics(metric_type_t metric,
+                                [in, string] const char *label_key,
+                                [in, string] const char *label_value,
+                                float data_value);
+        int64_t ocall_get_time();
+    };
+};

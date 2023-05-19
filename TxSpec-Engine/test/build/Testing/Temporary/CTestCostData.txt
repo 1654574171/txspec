@@ -1,0 +1,3 @@
+regulator_test 2 0.269085
+register_test 2 0.0475786
+---
